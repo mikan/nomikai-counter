@@ -16,6 +16,5 @@ class AppTests {
 
     @Test
     fun contextLoads() {
-        // do nothing
     }
 }
