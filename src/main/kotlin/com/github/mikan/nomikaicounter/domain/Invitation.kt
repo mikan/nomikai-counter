@@ -15,6 +15,5 @@ import org.springframework.data.mongodb.core.mapping.Field
  * @since 2.0
  */
 @Document
-data class Invitation(@Id var id: ObjectId?, @Field var discussionId: Long?, @Field var author: String,
-                      @Field var subject: String, @Field var description: String, @Field var deadline: String,
-                      @Field var posts: List<Post>, @Field var participants: List<Long>)
+data class Invitation(@Id var id: ObjectId?, @Field var author: String, @Field var subject: String,
+                      @Field var description: String, @Field var deadline: String, @Field var posts: List<Post>)

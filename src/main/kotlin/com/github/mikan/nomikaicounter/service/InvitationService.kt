@@ -20,7 +20,7 @@ class InvitationService @Autowired constructor(private val repository: Invitatio
                                                private val customRepository: MongoCustomRepository) {
 
     fun create(author: String, subject: String, description: String, deadline: String): Invitation {
-        return repository.save(Invitation(null, null, author, subject, description, deadline, emptyList(), emptyList()))
+        return repository.save(Invitation(null, author, subject, description, deadline, emptyList()))
     }
 
     fun find(id: String): Invitation? {

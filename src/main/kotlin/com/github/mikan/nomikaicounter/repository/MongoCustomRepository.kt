@@ -36,9 +36,9 @@ class MongoCustomRepository @Autowired constructor(private val mongoTemplate: Mo
         val sortOrder: DBObject = BasicDBObject("\$natural", -1);
         mongoTemplate.getCollection("invitation").find().sort(sortOrder).limit(limit).use {
             it.forEach {
-                list.add(Invitation(it.get("_id") as ObjectId, -1,
-                        it.get("author") as String, it.get("subject") as String, it.get("description") as String,
-                        it.get("deadline") as String, emptyList(), emptyList()))
+                list.add(Invitation(it.get("_id") as ObjectId, it.get("author") as String,
+                        it.get("subject") as String, it.get("description") as String,
+                        it.get("deadline") as String, emptyList()))
             }
         }
         return list
