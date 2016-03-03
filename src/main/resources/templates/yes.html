@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="#{title}">Nomikai Counter</title>
+    <link rel="stylesheet" type="text/css" href="../static/main/main.css" th:href="@{../main/main.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/jqueryui/jquery-ui.min.css"
+          th:href="@{../jqueryui/jquery-ui.min.css}"/>
+    <script src="../static/jquery/jquery-1.11.2.min.js" th:src="@{../jquery/jquery-1.11.2.min.js}"></script>
+    <script src="../static/jqueryui/jquery-ui.min.js" th:src="@{../jqueryui/jquery-ui.min.js}"></script>
+    <script src="../static/main/main.js" th:src="@{../main/main.js}"></script>
+</head>
+<body>
+<div id="wrapper">
+    <h1 th:text="#{title}"></h1>
+    <h2 class="yes">
+        <span th:text="${invitation.subject}">(NO DATA)</span>
+        <span th:text="#{answer.yes.title}"> - Attend</span></h2>
+    <dl>
+        <dt th:text="#{invitation.author}">Author</dt>
+        <dd th:text="${invitation.author}">(NO DATA)</dd>
+        <dt th:text="#{invitation.subject}">Subject</dt>
+        <dd th:text="${invitation.subject}">(NO DATA)</dd>
+        <dt th:text="#{invitation.description}">Description</dt>
+        <dd th:text="${invitation.description}">(NO DATA)</dd>
+        <dt th:text="#{invitation.deadline}">Deadline</dt>
+        <dd th:text="${invitation.deadline}">(NO DATA)</dd>
+    </dl>
+    <form action="" method="post">
+        <div>
+            <p th:text="#{answer.name}">Your Name</p>
+            <label><input type="text" name="name" required="required"/></label>
+            <p th:text="#{answer.message}">Message</p>
+            <label><input type="text" name="message"/></label>
+            <br/>
+            <input type="hidden" name="sessionId" th:value="${invitation.id}"/>
+            <input type="hidden" name="action" value="yes"/>
+            <input type="submit" value="Attend" th:value="#{answer.yes.submit}"/>
+        </div>
+    </form>
+    <p><a href="./no" th:text="#{answer.no.switch}" class="ornot">Switch to pass</a></p>
+    <div id="navi">
+        <a href="./" th:text="#{navigation.back}">Go back</a>
+    </div>
+    <div id="footer">
+        <p th:text="${versionLabel}"></p>
+        <p>Copyright&copy; <span th:text="${copyrightYear}"></span> <a th:href="${copyrightUrl}" th:text="${copyright}"></a></p>
+    </div>
+</div>
+</body>
+</html>

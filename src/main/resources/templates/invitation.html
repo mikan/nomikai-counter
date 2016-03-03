@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="#{title}">Nomikai Counter</title>
+    <link rel="stylesheet" type="text/css" href="../static/main/main.css" th:href="@{./main/main.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/jqueryui/jquery-ui.min.css"
+          th:href="@{jqueryui/jquery-ui.min.css}"/>
+    <script src="../static/jquery/jquery-1.11.2.min.js" th:src="@{jquery/jquery-1.11.2.min.js}"></script>
+    <script src="../static/jqueryui/jquery-ui.min.js" th:src="@{jqueryui/jquery-ui.min.js}"></script>
+    <script src="../static/main/main.js" th:src="@{./main/main.js}"></script>
+</head>
+<body>
+<div id="wrapper">
+    <h1 th:text="#{title}"></h1>
+    <h2 th:text="#{invitation.title}">Invitation Details</h2>
+    <dl>
+        <dt th:text="#{invitation.author}">Author</dt>
+        <dd th:text="${invitation.author}">(NO DATA)</dd>
+        <dt th:text="#{invitation.subject}">Subject</dt>
+        <dd th:text="${invitation.subject}">(NO DATA)</dd>
+        <dt th:text="#{invitation.description}">Description</dt>
+        <dd th:text="${invitation.description}">(NO DATA)</dd>
+        <dt th:text="#{invitation.deadline}">Deadline</dt>
+        <dd th:text="${invitation.deadline}">(NO DATA)</dd>
+    </dl>
+    <dl>
+        <dt th:text="#{invitation.url.yes}"></dt>
+        <dd><a th:href="${urlYes}"><span th:text="${urlYes}">(NO DATA)</span></a></dd>
+        <dt th:text="#{invitation.url.no}"></dt>
+        <dd><a th:href="${urlNo}"><span th:text="${urlNo}">(NO DATA)</span></a></dd>
+    </dl>
+    <dl>
+        <dt th:text="#{invitation.count.yes}">Number of attend</dt>
+        <dd th:text="${countYes}">(NO DATA)</dd>
+        <dt th:text="#{invitation.count.no}">Number of pass</dt>
+        <dd th:text="${countNo}">(NO DATA)</dd>
+    </dl>
+    <p th:if="${#lists.isEmpty(invitation.posts)}" th:text="#{invitation.no.data}" class="error">(NO DATA)</p>
+    <table th:if="${not #lists.isEmpty(invitation.posts)}">
+        <tr>
+            <th th:text="#{answer.name}">Name</th>
+            <th th:text="#{answer.title}">Answer</th>
+            <th th:text="#{answer.message}">Message</th>
+        </tr>
+        <tr th:each="post: ${invitation.posts}">
+            <td th:text="${post.name}">(NO DATA)</td>
+            <td th:if="${post.action.equals('yes')}" th:text="${post.action.toUpperCase()}" class="yes">YES</td>
+            <td th:if="${post.action.equals('no')}" th:text="${post.action.toUpperCase()}" class="no">NO</td>
+            <td th:text="${post.message}">(NO DATA)</td>
+        </tr>
+    </table>
+    <div id="footer">
+        <p th:text="${versionLabel}"></p>
+        <p>Copyright&copy; <span th:text="${copyrightYear}"></span> <a th:href="${copyrightUrl}" th:text="${copyright}"></a></p>
+    </div>
+</div>
+</body>
+</html>

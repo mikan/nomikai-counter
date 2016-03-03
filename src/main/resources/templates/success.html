@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="#{title}">Nomikai Counter</title>
+    <link rel="stylesheet" type="text/css" href="../static/main/main.css" th:href="@{../main/main.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/jqueryui/jquery-ui.min.css"
+          th:href="@{../jqueryui/jquery-ui.min.css}"/>
+    <script src="../static/jquery/jquery-1.11.2.min.js" th:src="@{../jquery/jquery-1.11.2.min.js}"></script>
+    <script src="../static/jqueryui/jquery-ui.min.js" th:src="@{../jqueryui/jquery-ui.min.js}"></script>
+    <script src="../static/main/main.js" th:src="@{../main/main.js}"></script>
+</head>
+<body>
+<div id="wrapper">
+    <h1 th:text="#{title}"></h1>
+    <h2 th:text="#{success.title}">Complete</h2>
+    <p th:text="#{success.message}">(No DATA)</p>
+    <div id="footer">
+        <p th:text="${versionLabel}"></p>
+        <p>Copyright&copy; <span th:text="${copyrightYear}"></span> <a th:href="${copyrightUrl}" th:text="${copyright}"></a></p>
+    </div>
+</div>
+</body>
+</html>

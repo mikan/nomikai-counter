@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="#{title}">Nomikai Counter</title>
+    <link rel="stylesheet" type="text/css" href="../static/main/main.css" th:href="@{./main/main.css}"/>
+    <link rel="stylesheet" type="text/css" href="../static/jqueryui/jquery-ui.min.css"
+          th:href="@{jqueryui/jquery-ui.min.css}"/>
+    <script src="../static/jquery/jquery-1.11.2.min.js" th:src="@{./jquery/jquery-1.11.2.min.js}"></script>
+    <script src="../static/jqueryui/jquery-ui.min.js" th:src="@{./jqueryui/jquery-ui.min.js}"></script>
+    <script src="../static/main/main.js" th:src="@{./main/main.js}"></script>
+</head>
+<body>
+<div id="wrapper">
+    <h1 th:text="#{title}"></h1>
+    <h2 th:text="#{explore.title}">Explore</h2>
+    <p th:if="${#lists.isEmpty(invitations)}" th:text="#{invitation.no.data}" class="error">(NO DATA)</p>
+    <table th:if="${not #lists.isEmpty(invitations)}">
+        <tr>
+            <th th:text="#{invitation.author}">Author</th>
+            <th th:text="#{invitation.subject}">Subject</th>
+            <th th:text="#{invitation.deadline}">Deadline</th>
+        </tr>
+        <tr th:each="invitation: ${invitations}">
+            <td th:text="${invitation.author}">(NO DATA)</td>
+            <td><a th:href="${invitation.id.toString()}" th:text="${invitation.subject}">(NO DATA)</a></td>
+            <td th:text="${invitation.deadline}">(NO DATA)</td>
+        </tr>
+    </table>
+    <div id="navi">
+        <a href="./" th:text="#{navigation.back}">Go back</a>
+    </div>
+    <div id="footer">
+        <p th:text="${versionLabel}"></p>
+        <p>Copyright&copy; <span th:text="${copyrightYear}"></span> <a th:href="${copyrightUrl}" th:text="${copyright}"></a></p>
+    </div>
+</div>
+</body>
+</html>
