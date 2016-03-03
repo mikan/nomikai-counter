@@ -5,6 +5,6 @@
 
 An inviting support tool for nomikai (drinking parties).
 
-Nomikai Counter provides decisional question "Yes" or "No" for all guests of your nomikai invitations.
+Nomikai Counter provides simple question "Yes" or "No" for all guests of your nomikai invitations. Master can check result of the invitation every tine.
 
 Old version is here: https://github.com/mikan/nomikai-counter-v1 (Written by Ceylon)
