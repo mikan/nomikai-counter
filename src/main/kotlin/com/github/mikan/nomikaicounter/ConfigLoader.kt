@@ -1,3 +1,6 @@
+/*
+ * Copyright(C) 2014-2016 mikan All rights reserved.
+ */
 package com.github.mikan.nomikaicounter
 
 import com.github.mikan.nomikaicounter.web.ControllerUtil
@@ -20,12 +23,12 @@ import java.util.logging.Logger
 @Configuration
 open class ConfigLoader : AbstractMongoConfiguration() {
 
-    private final val DEFAULT_DATABASE = "nomikai"
-    private final val DEFAULT_HOST = "localhost"
-    private final val DEFAULT_PORT = 27017
-    private final val database: String
-    private final val host: String
-    private final val port: Int
+    private val DEFAULT_DATABASE = "nomikai"
+    private val DEFAULT_HOST = "localhost"
+    private val DEFAULT_PORT = 27017
+    private var database: String
+    private var host: String
+    private var port: Int
 
     init {
         val log = Logger.getLogger(ConfigLoader::class.qualifiedName)

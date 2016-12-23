@@ -1,9 +1,9 @@
 /*
- * Copyright(C) 2014-2016 Yutaka Kato All rights reserved.
+ * Copyright(C) 2014-2016 mikan All rights reserved.
  */
 package com.github.mikan.nomikaicounter.web
 
-import com.github.mikan.nomikaicounter.service.InvitationService
+import com.github.mikan.nomikaicounter.domain.service.InvitationService
 import com.github.mikan.nomikaicounter.web.ControllerUtil.Companion.createDefaultAttributes
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -32,9 +32,9 @@ class InvitationController @Autowired constructor(private val service: Invitatio
         model.addAttribute("invitation", invitation)
         model.addAttribute("urlYes", request.requestURL.toString() + "/yes")
         model.addAttribute("urlNo", request.requestURL.toString() + "/no")
-        model.addAttribute("countYes", invitation.posts.filter { p -> p.action.equals("yes") }.count())
-        model.addAttribute("countNo", invitation.posts.filter { p -> p.action.equals("no") }.count())
-        return "invitation";
+        model.addAttribute("countYes", invitation.posts.filter { p -> p.action == "yes" }.count())
+        model.addAttribute("countNo", invitation.posts.filter { p -> p.action == "no" }.count())
+        return "invitation"
     }
 
     @RequestMapping(path = arrayOf("/{id}/yes", "/{id}/no"), method = arrayOf(POST))
@@ -43,7 +43,6 @@ class InvitationController @Autowired constructor(private val service: Invitatio
         model.addAllAttributes(createDefaultAttributes())
         if (service.addPost(id, name, action, message)) {
             return "success"
-
         } else {
             return ControllerUtil.errorView(log, model, "Update failed. Please contact the administrator.")
         }
@@ -54,7 +53,7 @@ class InvitationController @Autowired constructor(private val service: Invitatio
         model.addAllAttributes(createDefaultAttributes())
         val invitation = service.find(id) ?: return ControllerUtil.errorView(log, model, "No invitation found.")
         model.addAttribute("invitation", invitation)
-        return "yes";
+        return "yes"
     }
 
     @RequestMapping("/{id}/no", method = arrayOf(GET))
@@ -62,6 +61,6 @@ class InvitationController @Autowired constructor(private val service: Invitatio
         model.addAllAttributes(createDefaultAttributes())
         val invitation = service.find(id) ?: return ControllerUtil.errorView(log, model, "No invitation found.")
         model.addAttribute("invitation", invitation)
-        return "no";
+        return "no"
     }
 }

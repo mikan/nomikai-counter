@@ -1,9 +1,9 @@
 /*
- * Copyright(C) 2014-2016 Yutaka Kato All rights reserved.
+ * Copyright(C) 2014-2016 mikan All rights reserved.
  */
 package com.github.mikan.nomikaicounter.web
 
-import com.github.mikan.nomikaicounter.service.InvitationService
+import com.github.mikan.nomikaicounter.domain.service.InvitationService
 import com.github.mikan.nomikaicounter.web.ControllerUtil.Companion.createDefaultAttributes
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
@@ -22,6 +22,6 @@ class ExploreController @Autowired constructor(val service: InvitationService) {
     fun home(model: Model): String {
         model.addAllAttributes(createDefaultAttributes())
         model.addAttribute("invitations", service.findAll(50))
-        return "explore";
+        return "explore"
     }
 }

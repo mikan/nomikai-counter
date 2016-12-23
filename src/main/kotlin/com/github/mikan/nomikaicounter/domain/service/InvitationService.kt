@@ -1,11 +1,11 @@
 /*
- * Copyright(C) 2014-2016 Yutaka Kato All rights reserved.
+ * Copyright(C) 2014-2016 mikan All rights reserved.
  */
-package com.github.mikan.nomikaicounter.service
+package com.github.mikan.nomikaicounter.domain.service
 
-import com.github.mikan.nomikaicounter.domain.Invitation
-import com.github.mikan.nomikaicounter.repository.InvitationRepository
-import com.github.mikan.nomikaicounter.repository.MongoCustomRepository
+import com.github.mikan.nomikaicounter.domain.model.Invitation
+import com.github.mikan.nomikaicounter.domain.repository.InvitationRepository
+import com.github.mikan.nomikaicounter.domain.repository.MongoCustomRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 

@@ -1,3 +1,6 @@
+/*
+ * Copyright(C) 2014-2016 mikan All rights reserved.
+ */
 package com.github.mikan.nomikaicounter
 
 import org.springframework.boot.builder.SpringApplicationBuilder

@@ -1,5 +1,5 @@
 /*
- * Copyright(C) 2014-2016 Yutaka Kato All rights reserved.
+ * Copyright(C) 2014-2016 mikan All rights reserved.
  */
 package com.github.mikan.nomikaicounter.web
 
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping
 @Controller
 class ErrorController : org.springframework.boot.autoconfigure.web.ErrorController {
     companion object {
-        const final val VIEW = "error"
-        const final val ATTR_MESSAGE = "message"
+        const val VIEW = "error"
+        const val ATTR_MESSAGE = "message"
     }
 
     override fun getErrorPath(): String? {
@@ -28,6 +28,6 @@ class ErrorController : org.springframework.boot.autoconfigure.web.ErrorControll
         if (!model.containsAttribute(ATTR_MESSAGE)) {
             model.addAttribute(ATTR_MESSAGE, "Fatal error.")
         }
-        return VIEW;
+        return VIEW
     }
 }

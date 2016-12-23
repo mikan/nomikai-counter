@@ -1,9 +1,9 @@
 /*
- * Copyright(C) 2014-2016 Yutaka Kato All rights reserved.
+ * Copyright(C) 2014-2016 mikan All rights reserved.
  */
-package com.github.mikan.nomikaicounter.repository
+package com.github.mikan.nomikaicounter.domain.repository
 
-import com.github.mikan.nomikaicounter.domain.Invitation
+import com.github.mikan.nomikaicounter.domain.model.Invitation
 import com.mongodb.BasicDBObject
 import com.mongodb.DBObject
 import org.bson.types.ObjectId
@@ -20,7 +20,7 @@ import java.util.logging.Logger
  * @since 2.0
  */
 @Component
-class MongoCustomRepository @Autowired constructor(private val mongoTemplate: MongoTemplate) : PostRepository {
+open class MongoCustomRepository @Autowired constructor(private val mongoTemplate: MongoTemplate) : PostRepository {
 
     override fun addPost(id: String, name: String, action: String, message: String): Boolean {
         val findQuery = BasicDBObject("_id", ObjectId(id))
@@ -33,7 +33,7 @@ class MongoCustomRepository @Autowired constructor(private val mongoTemplate: Mo
 
     fun findAll(limit: Int): List<Invitation> {
         val list: MutableList<Invitation> = ArrayList()
-        val sortOrder: DBObject = BasicDBObject("\$natural", -1);
+        val sortOrder: DBObject = BasicDBObject("\$natural", -1)
         mongoTemplate.getCollection("invitation").find().sort(sortOrder).limit(limit).use {
             it.forEach {
                 list.add(Invitation(it.get("_id") as ObjectId, it.get("author") as String,

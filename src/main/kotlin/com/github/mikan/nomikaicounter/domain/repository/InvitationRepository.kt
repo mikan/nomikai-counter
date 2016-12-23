@@ -1,9 +1,9 @@
 /*
- * Copyright(C) 2014-2016 Yutaka Kato All rights reserved.
+ * Copyright(C) 2014-2016 mikan All rights reserved.
  */
-package com.github.mikan.nomikaicounter.repository
+package com.github.mikan.nomikaicounter.domain.repository
 
-import com.github.mikan.nomikaicounter.domain.Invitation
+import com.github.mikan.nomikaicounter.domain.model.Invitation
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 
