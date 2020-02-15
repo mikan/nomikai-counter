@@ -1,10 +1,10 @@
 /*
- * Copyright(C) 2014-2016 mikan All rights reserved.
+ * Copyright(C) 2014-2020 mikan All rights reserved.
  */
 package com.github.mikan.nomikaicounter
 
 import org.springframework.boot.builder.SpringApplicationBuilder
-import org.springframework.boot.context.web.SpringBootServletInitializer
+import org.springframework.boot.web.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Configuration
 
 /**

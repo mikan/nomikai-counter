@@ -1,5 +1,5 @@
 /*
- * Copyright(C) 2014-2016 mikan All rights reserved.
+ * Copyright(C) 2014-2020 mikan All rights reserved.
  */
 package com.github.mikan.nomikaicounter.web
 
@@ -16,7 +16,7 @@ class ControllerUtil {
     companion object {
         var copyright = "mikan"
         var copyrightUrl = "https://github.com/mikan/nomikai-counter"
-        var copyrightYear = "2014-2016"
+        var copyrightYear = "2014-2020"
 
         fun errorView(log: Logger, model: Model, message: String): String {
             model.addAttribute(ErrorController.ATTR_MESSAGE, message)

@@ -1,5 +1,5 @@
 /*
- * Copyright(C) 2014-2016 mikan All rights reserved.
+ * Copyright(C) 2014-2020 mikan All rights reserved.
  */
 package com.github.mikan.nomikaicounter.web
 
@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod.GET
  * @since 2.0
  */
 @Controller
-class ExploreController @Autowired constructor(val service: InvitationService) {
+class ExploreController @Autowired constructor(private val service: InvitationService) {
 
-    @RequestMapping("/explore", method = arrayOf(GET))
+    @RequestMapping("/explore", method = [GET])
     fun home(model: Model): String {
         model.addAllAttributes(createDefaultAttributes())
         model.addAttribute("invitations", service.findAll(50))

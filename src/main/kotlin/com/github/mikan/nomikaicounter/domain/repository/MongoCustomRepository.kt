@@ -1,5 +1,5 @@
 /*
- * Copyright(C) 2014-2016 mikan All rights reserved.
+ * Copyright(C) 2014-2020 mikan All rights reserved.
  */
 package com.github.mikan.nomikaicounter.domain.repository
 
@@ -27,7 +27,7 @@ open class MongoCustomRepository @Autowired constructor(private val mongoTemplat
         val postItem = BasicDBObject().append("name", name).append("action", action).append("message", message)
         val updateQuery = BasicDBObject("\$push", BasicDBObject("posts", postItem))
         val result = mongoTemplate.getCollection("invitation").update(findQuery, updateQuery)
-        Logger.getLogger(MongoCustomRepository::class.qualifiedName).info("Post result: " + result)
+        Logger.getLogger(MongoCustomRepository::class.qualifiedName).info("Post result: $result")
         return result.isUpdateOfExisting
     }
 

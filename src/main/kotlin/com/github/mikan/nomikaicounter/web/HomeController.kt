@@ -1,5 +1,5 @@
 /*
- * Copyright(C) 2014-2016 mikan All rights reserved.
+ * Copyright(C) 2014-2020 mikan All rights reserved.
  */
 package com.github.mikan.nomikaicounter.web
 
@@ -26,13 +26,13 @@ class HomeController @Autowired constructor(private val service: InvitationServi
 
     private val log = Logger.getLogger(HomeController::class.qualifiedName)
 
-    @RequestMapping(value = "/", method = arrayOf(GET))
+    @RequestMapping(value = ["/"], method = [GET])
     fun handleGet(model: Model): String {
         model.addAllAttributes(createDefaultAttributes())
         return "home"
     }
 
-    @RequestMapping(value = "/", method = arrayOf(POST))
+    @RequestMapping(value = ["/"], method = [POST])
     fun handlePost(model: Model, @RequestParam("name") name: String, @RequestParam("subject") subject: String,
                    @RequestParam("description") description: String, @RequestParam("deadline") deadline: String):
             String {

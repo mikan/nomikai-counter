@@ -1,5 +1,5 @@
 /*
- * Copyright(C) 2014-2016 mikan All rights reserved.
+ * Copyright(C) 2014-2020 mikan All rights reserved.
  */
 package com.github.mikan.nomikaicounter.web
 
@@ -25,7 +25,7 @@ class InvitationController @Autowired constructor(private val service: Invitatio
 
     private val log = Logger.getLogger(InvitationController::class.qualifiedName)
 
-    @RequestMapping("/{id}", method = arrayOf(GET))
+    @RequestMapping("/{id}", method = [GET])
     fun handleGet(model: Model, @PathVariable("id") id: String, request: HttpServletRequest): String {
         model.addAllAttributes(createDefaultAttributes())
         val invitation = service.find(id) ?: return ControllerUtil.errorView(log, model, "No invitation found.")
@@ -37,7 +37,7 @@ class InvitationController @Autowired constructor(private val service: Invitatio
         return "invitation"
     }
 
-    @RequestMapping(path = arrayOf("/{id}/yes", "/{id}/no"), method = arrayOf(POST))
+    @RequestMapping(path = ["/{id}/yes", "/{id}/no"], method = [POST])
     fun handlePost(model: Model, @PathVariable("id") id: String, @RequestParam("name") name: String, @RequestParam("action") action: String,
                    @RequestParam("message") message: String): String {
         model.addAllAttributes(createDefaultAttributes())
@@ -48,7 +48,7 @@ class InvitationController @Autowired constructor(private val service: Invitatio
         }
     }
 
-    @RequestMapping("/{id}/yes", method = arrayOf(GET))
+    @RequestMapping("/{id}/yes", method = [GET])
     fun yes(model: Model, @PathVariable("id") id: String): String {
         model.addAllAttributes(createDefaultAttributes())
         val invitation = service.find(id) ?: return ControllerUtil.errorView(log, model, "No invitation found.")
@@ -56,7 +56,7 @@ class InvitationController @Autowired constructor(private val service: Invitatio
         return "yes"
     }
 
-    @RequestMapping("/{id}/no", method = arrayOf(GET))
+    @RequestMapping("/{id}/no", method = [GET])
     fun no(model: Model, @PathVariable("id") id: String): String {
         model.addAllAttributes(createDefaultAttributes())
         val invitation = service.find(id) ?: return ControllerUtil.errorView(log, model, "No invitation found.")
